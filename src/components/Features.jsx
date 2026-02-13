@@ -18,7 +18,7 @@ const ModelScroll = () => {
     const { setTexture } = useMacbookStore()
 
     useEffect(() => {
-        featureSequence.map((item, index) => {
+        featureSequence.forEach((item) => {
             const v = document.createElement('video')
             Object.assign(v, {
                 src: item.videoPath,
@@ -30,7 +30,7 @@ const ModelScroll = () => {
             })
             v.load()
         })
-    }, [featureSequence])
+    }, [])
 
     useGSAP(() => {
         const modeltTimeline = gsap.timeline({
