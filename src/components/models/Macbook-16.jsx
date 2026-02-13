@@ -19,10 +19,10 @@ export default function Macbook16(props) {
   const { nodes, materials, scene } = useGLTF('/models/macbook-16-transformed.glb')
   const texture = useTexture('/screen.png')
 
-  useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
     texture.colorSpace = THREE.SRGBColorSpace;
+    // eslint-disable-next-line react-hooks/immutability
     texture.needsUpdate = true;
-  }, [texture])
 
   useEffect(() => {
     scene.traverse((child) => {

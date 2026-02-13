@@ -30,7 +30,7 @@ const ModelScroll = () => {
             })
             v.load()
         })
-    }, [])
+    }, [featureSequence])
 
     useGSAP(() => {
         const modeltTimeline = gsap.timeline({
