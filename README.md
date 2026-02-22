@@ -6,37 +6,41 @@ Una landing page interactiva y moderna para el MacBook Pro, construida con React
 
 ### Modelo 3D Interactivo
 - **Visualizador de Producto**: Modelo 3D del MacBook Pro renderizado con React Three Fiber
-- **Personalización en Tiempo Real**: 
+- **Personalización en Tiempo Real**:
   - Cambio de color (Gris Espacial / Negro Espacial)
   - Selección de tamaño (14" / 16")
 - **Rotación Animada**: El modelo rota 360° basado en el scroll del usuario
 
 ### Animaciones con GSAP
 - **ScrollTrigger**: Animaciones sincronizadas con el desplazamiento de la página
+- **SplitText**: Efectos de texto animado
 - **Transiciones Fluidas**: Efectos de entrada y salida suaves para todos los elementos
 - **Timelines Complejos**: Secuencias de animación coordinadas entre múltiples elementos
 
 ### Secciones de la Aplicación
 
-1. **Hero Section**
+1. **Navbar**
+   - Navegación fija con enlaces a secciones
+
+2. **Hero**
    - Video de presentación con reproducción automática
    - Título y call-to-action
 
-2. **Product Viewer**
+3. **Product Viewer**
    - Visualizador 3D interactivo
    - Controles para cambiar color y tamaño del modelo
-   - Iluminación de estudio profesional
+   - Iluminación de estudio profesional (StudioLights)
 
-3. **Showcase**
+4. **Showcase**
    - Sección destacada sobre el chip M4
    - Video con efectos de máscara y animaciones de scroll
    - Información sobre rendimiento y características
 
-4. **Performance**
+5. **Performance**
    - Galería de imágenes de rendimiento
    - Layout dinámico con posicionamiento absoluto
 
-5. **Features** (Sección Principal)
+6. **Features** (Sección Principal)
    - Modelo 3D del MacBook con rotación basada en scroll
    - Cambio dinámico de videos en la pantalla del MacBook según el scroll
    - 5 características destacadas con animaciones:
@@ -47,31 +51,34 @@ Una landing page interactiva y moderna para el MacBook Pro, construida con React
      - Writing Tool
    - Cada característica se revela con su video correspondiente
 
-6. **Highlights**
+7. **Highlights**
    - Layout tipo masonry con características destacadas
    - Animaciones de entrada escalonadas
    - Información sobre batería, pantalla y Apple Intelligence
 
-7. **Footer**
+8. **Footer**
    - Enlaces legales y de navegación
 
 ## 🛠️ Tecnologías Utilizadas
 
 - **React 19** - Biblioteca de UI
-- **Vite** - Build tool y dev server
+- **Vite 7** - Build tool y dev server
 - **React Three Fiber (R3F)** - Renderizado 3D con Three.js
 - **@react-three/drei** - Utilidades y helpers para R3F
-- **GSAP** - Animaciones avanzadas
+- **GSAP** - Animaciones avanzadas (ScrollTrigger, SplitText)
 - **@gsap/react** - Hooks de React para GSAP
-- **Tailwind CSS** - Framework de estilos utility-first
+- **Tailwind CSS 4** - Framework de estilos utility-first (con @tailwindcss/vite)
 - **Zustand** - Gestión de estado global ligera
 - **react-responsive** - Detección de dispositivos responsive
+- **clsx** - Composición de clases CSS
 
 ## 📦 Instalación
 
 ```bash
 # Instalar dependencias
 npm install
+# o
+pnpm install
 
 # Iniciar servidor de desarrollo
 npm run dev
@@ -81,6 +88,9 @@ npm run build
 
 # Vista previa de la build de producción
 npm run preview
+
+# Linter
+npm run lint
 ```
 
 ## 🎨 Características Técnicas
@@ -90,9 +100,10 @@ npm run preview
 - **Estado Reactivo**: Los cambios en el store actualizan automáticamente el modelo 3D
 
 ### Renderizado 3D
-- **Modelo GLTF**: Carga y renderiza modelos 3D optimizados
+- **Modelos GLTF**: Carga y renderiza modelos 3D optimizados (MacBook 14" y 16")
+- **ModelSwitcher**: Componente para alternar entre modelos según la selección
 - **Texturas de Video**: Reproduce videos directamente en la pantalla del MacBook
-- **Iluminación Personalizada**: Sistema de luces de estudio para mejor visualización
+- **Iluminación Personalizada**: Sistema de luces de estudio (StudioLights) para mejor visualización
 
 ### Responsive Design
 - **Diseño Adaptativo**: Optimizado para desktop, tablet y móvil
@@ -109,17 +120,26 @@ npm run preview
 ```
 src/
 ├── components/
-│   ├── models/          # Componentes de modelos 3D
-│   ├── three/           # Componentes auxiliares de Three.js
-│   ├── Features.jsx     # Sección principal con modelo 3D
-│   ├── Hero.jsx         # Sección hero
-│   ├── ProductViewer.jsx # Visualizador interactivo
-│   ├── Showcase.jsx     # Showcase del chip M4
-│   ├── Highlights.jsx   # Características destacadas
-│   └── ...
-├── store/               # Store de Zustand
-├── constants/           # Constantes y configuraciones
-└── App.jsx             # Componente principal
+│   ├── models/           # Modelos 3D del MacBook
+│   │   ├── Macbook.jsx   # Wrapper del modelo
+│   │   ├── Macbook-14.jsx
+│   │   └── Macbook-16.jsx
+│   ├── three/            # Componentes auxiliares de Three.js
+│   │   └── ModelSwitcher.jsx
+│   ├── Features.jsx      # Sección principal con modelo 3D
+│   ├── Footer.jsx
+│   ├── Hero.jsx
+│   ├── Highlights.jsx
+│   ├── Navbar.jsx
+│   ├── Perfomance.jsx    # Sección de rendimiento
+│   ├── ProductViewer.jsx
+│   ├── Showcase.jsx
+│   └── StudioLights.jsx
+├── store/
+│   └── index.js          # Store de Zustand
+├── App.jsx
+├── main.jsx
+└── index.css
 ```
 
 ## 🎯 Uso
